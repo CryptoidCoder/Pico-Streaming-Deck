@@ -10,4 +10,4 @@
 
 
 ## Circuit Diagram:
-![Pico-StreamDeck Ciruit Diagram](Pico-StreamDeck(Labelled).png)
+![Pico-StreamDeck Ciruit Diagram](Pico-StreamDeck(Labelled).jpg)
