@@ -11,6 +11,8 @@ from adafruit_hid.keycode import Keycode
 #declare what interface the usb_hid connectoin is
 keyboard = Keyboard(usb_hid.devices)
 
+## Buttons
+
 #set pin variables
 btn1_pin = board.GP14
 btn2_pin = board.GP13
@@ -40,17 +42,25 @@ btn4.pull = digitalio.Pull.DOWN
 btn0.pull = digitalio.Pull.DOWN
 
 
+## Switch
+
+#set switch pins to GP8/9
 switch1_pin = board.GP9
 switch0_pin = board.GP8
 
+#set pins
 switch1 = digitalio.DigitalInOut(switch1_pin)
 switch0 = digitalio.DigitalInOut(switch0_pin)
 
+#set to be inputs
 switch1.direction = digitalio.Direction.INPUT
 switch0.direction = digitalio.Direction.INPUT
 
+#set to be normally Flase, when pressed == True
 switch1.pull = digitalio.Pull.DOWN
 switch0.pull = digitalio.Pull.DOWN
+
+## LED's
 
 #set pin variables
 LED1_pin = board.GP16
@@ -70,45 +80,19 @@ LED2.direction = digitalio.Direction.OUTPUT
 LED3.direction = digitalio.Direction.OUTPUT
 LED4.direction = digitalio.Direction.OUTPUT
 
-    
-
-def Only_LED1ON():
-    LED1.value = True
-    LED2.value = False
-    LED3.value = False
-    LED4.value = False
-    
-def Only_LED2ON():
-    LED1.value = False
-    LED2.value = True
-    LED3.value = False
-    LED4.value = False
-    
-def Only_LED3ON():
-    LED1.value = False
-    LED2.value = False
-    LED3.value = True
-    LED4.value = False
-    
-def Only_LED4ON():
-    LED1.value = False
-    LED2.value = False
-    LED3.value = False
-    LED4.value = True
-
-def all_LEDS_off():
+def all_LEDS_off(): #turn all the LED's off
     LED1.value = False
     LED2.value = False
     LED3.value = False
     LED4.value = False
     
-def toggle_all():
+def toggle_all(): #toggle all the LED's ON-> OFF, OFF -> ON
     toggle(LED1)
     toggle(LED2)
     toggle(LED3)
     toggle(LED4)
     
-def flash_all():
+def flash_all(): #toggle all of the LED's Twice
     toggle(LED1)
     toggle(LED2)
     toggle(LED3)
@@ -119,17 +103,26 @@ def flash_all():
     toggle(LED3)
     toggle(LED4)
 
-def toggle(input):
-    if input.value == True:
+def toggle(input): #toggle a specific LED ON-> OFF, OFF -> ON
+    if input.value == True: #if on make off
         input.value = False
-    elif input.value == False:
+    elif input.value == False: #if off make on
         input.value = True
 
-def toggle_discord_streamer_mode():
-    keyboard.send(Keycode.CONTROL, Keycode.SHIFT, Keycode.F1)
-    time.sleep(0.25)
-    toggle(LED3)
-
-def create_desktop_environments():
+def create_desktop_environments(): #create desktopenvironment, then switch back to primary environment
     keyboard.send(Keycode.CONTROL, Keycode.WINDOWS, Keycode.D) #create new desktop environment
     keyboard.send(Keycode.CONTROL, Keycode.WINDOWS, Keycode.LEFT_ARROW) #switch back to primary environment
+    
+def get_values():
+    if LED2.value:
+        print("LED2 ON - Discord IS Deafened")
+        
+    if LED3.value:
+        print("LED3 ON - Microphone IS Unmuted In Discord")
+        
+    if LED4.value:
+        print("LED4 ON - Streaming Mode Enabled In Discord")
+        
+    else:
+        print("No LED's ON!")
+        

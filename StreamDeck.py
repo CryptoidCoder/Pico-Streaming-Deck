@@ -1,62 +1,68 @@
-from StreamDeckFunctions import *
+from StreamDeckFunctions import * #import functions from functions file
+#import StreamDeckFunctions
+current_switch0_state = True #set this as the primary dekstop environment
 
-current_switch0_state = True
+#create_desktop_environments() #create a desktop environment
 
-create_desktop_environments()
-while True:
-    #button 1 is Alt+Tab
-    if btn1.value:
-        print("Alt+Tab - Toggled")
-        toggle(LED1) #turn ON LED1
-        keyboard.press(Keycode.ALT, Keycode.TAB)
+while True: #always:
+
+    #button 0 is Alt+Tab
+    if btn0.value: #if button1 pressed then print a message and press ALT+TAB
+        #print("Alt+Tab - Toggled") #print message
+        keyboard.send(Keycode.ALT, Keycode.TAB) #send the keycodes
         time.sleep(0.25)
-        keyboard.release(Keycode.ALT, Keycode.TAB)
-        toggle(LED1) #turn OFF LED2
+
+    if btn1.value: #Ctrl+Shift+F10 for ptt
+        LED1.value = True
+        keyboard.press(Keycode.CONTROL, Keycode.SHIFT, Keycode.F10) #send the keycodes
+    
+        if not btn1.value:
+            LED1.value = False
+            keyboard.release(Keycode.CONTROL, Keycode.SHIFT, Keycode.F10) #send the keycodes
+
+
         
-    #button 2 is Windows Key
+        
+    #button 2 is ?
     if btn2.value:
-        print("Windows Menu - Toggled")
-        toggle(LED2) #turn ON LED2
-        keyboard.send(Keycode.WINDOWS)
+        #print("Discord Deafen - Toggled") #print message
+        keyboard.send(Keycode.CONTROL, Keycode.SHIFT, Keycode.F11) #send the keycodes
         time.sleep(0.25)
         toggle(LED2) #turn OFF LED2
         
     #button 3 is Ctrl+Shift+F1 (Discord Streamer Mode)
     if btn3.value:
-        print("Discord Streamer Mode - Toggled")
-        toggle_discord_streamer_mode()
+        #print("Mute For Discord - Toggled") #print message
+        keyboard.send(Keycode.CONTROL, Keycode.SHIFT, Keycode.F12)
         time.sleep(0.25)
+        toggle(LED3) #toggle the LED
+
         
-    #button 4 is
+    #button 4 is Push To Talk in Discord (Ctrl+Shift+F3)
     if btn4.value:
-        print("button 4 toggled")
-        toggle(LED4)
-        time.sleep(0.25)
+        #print("Discord Streamer Mode - Toggled") #print message
+        keyboard.send(Keycode.CONTROL, Keycode.SHIFT, Keycode.F1)
+        time.sleep(0.1)
+        toggle(LED4) #toggle the LED
         
-    #button 0 is Windows Key + D (Desktop)
-    if btn0.value:
-        print("Desktop - Toggled")
-        toggle_all()
-        keyboard.press(Keycode.WINDOWS, Keycode.D)
-        time.sleep(0.25)
-        keyboard.release(Keycode.WINDOWS, Keycode.D)
-        toggle_all()
     
     #if switch has changed position
     if switch0.value != current_switch0_state: 
         if switch1.value: #if switch in the '0' position switch to the primary desktop environment
-            print("Environment Set To Primary")
+            #print("Environment Set To Primary") #print message
             flash_all()
             keyboard.send(Keycode.CONTROL, Keycode.WINDOWS, Keycode.LEFT_ARROW)
             current_switch0_state = False
             time.sleep(0.25)
             
         if switch0.value: #if switch in the '1' position switch to the secondary desktop environment
-            print("Environment Set To Secondary")
+            #print("Environment Set To Secondary") #print message
             flash_all()
             keyboard.send(Keycode.CONTROL, Keycode.WINDOWS, Keycode.RIGHT_ARROW)
             current_switch0_state = True
-            time.sleep(0.25)
-        
+            time.sleep(0.25)        
         
     time.sleep(0.1)
+    
+    
+#make a on-exit script to delete the desktop environments
