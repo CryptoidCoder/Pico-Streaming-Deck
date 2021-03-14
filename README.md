@@ -17,7 +17,7 @@
 
 
 ## Explanation:
-You can change the code to whatever you want (This will be usefull)[https://github.com/adafruit/Adafruit_CircuitPython_HID/blob/master/adafruit_hid/keycode.py] but this is what the defaults are:
+You can change the code to whatever you want [This will be useful](https://github.com/adafruit/Adafruit_CircuitPython_HID/blob/master/adafruit_hid/keycode.py) but this is what the defaults are:
 - The switch moves between desktop environments (`Ctrl+Win+D/Left_Arrow/Right_Arrow`) & flashes the LED's - To see what desktop envrionments you have Press `Win+Tab`
 - Button0 (the furthest Left on the diagram) moves to desktop (`Win+D`) & flashes the LED's
 - Button1 moves between windows - (`Alt+Tab`)
