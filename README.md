@@ -24,3 +24,11 @@ You can change the code to whatever you want [This will be useful](https://githu
 - Button2 opens the Program Menu (`Win`)
 - Button3 turns on streamer mode in Discord (`Ctrl+Shift+F1`) - You will need to set this custom shortcut in Discord for this to work
 - Button4 currently does nothing.
+
+
+## With Thanks To:
+[JBDynamics for providing the Pico library for Eagle](https://www.raspberrypi.org/forums/viewtopic.php?t=302397#p1814462)
+[Here is a direct download link](https://www.raspberrypi.org/forums/download/file.php?id=44669)
+
+
+
