@@ -1,0 +1,8 @@
+Make a menu:
+- Use a rotary encoder to select different modes:
+- - Discord {Mute, Deafen, Streamer Mode}
+- - OBS {Change Scene, Show Camera}
+- - Windows {Alt+Tab, Switch between desktops, open windows}
+
+- Use a 16x2 LCD Display to show this. (Possibly replace the LED's with something on the screen?)
+

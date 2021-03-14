@@ -102,6 +102,16 @@ def flash_all(): #toggle all of the LED's Twice
     toggle(LED2)
     toggle(LED3)
     toggle(LED4)
+    
+    
+def flash_ptt(): #toggle all of the LED's Twice
+    toggle(LED2)
+    toggle(LED3)
+    toggle(LED4)
+    time.sleep(0.5)
+    toggle(LED2)
+    toggle(LED3)
+    toggle(LED4)
 
 def toggle(input): #toggle a specific LED ON-> OFF, OFF -> ON
     if input.value == True: #if on make off
@@ -124,5 +134,4 @@ def get_values():
         print("LED4 ON - Streaming Mode Enabled In Discord")
         
     else:
-        print("No LED's ON!")
-        
+        print("No LED's ON!")          
