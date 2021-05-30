@@ -34,7 +34,7 @@ btn3.direction = digitalio.Direction.INPUT
 btn4.direction = digitalio.Direction.INPUT
 btn0.direction = digitalio.Direction.INPUT
 
-#set to be normally Flase, when pressed == True
+#set to be normally False, when pressed == True
 btn1.pull = digitalio.Pull.DOWN
 btn2.pull = digitalio.Pull.DOWN
 btn3.pull = digitalio.Pull.DOWN
